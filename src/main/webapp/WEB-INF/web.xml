@@ -10,10 +10,13 @@
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
 			<param-value>local.jnadeau.xmlrest.jaxbandjersey</param-value>
-                        <param-name>jersey.config.server.tracing.type</param-name>
-                        <param-value>ALL</param-value> 
+                       
 
 		</init-param>
+                <init-param>
+                     <param-name>jersey.config.server.tracing.type</param-name>
+                     <param-value>ALL</param-value> 
+                </init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
