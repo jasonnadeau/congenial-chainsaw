@@ -6,13 +6,10 @@ My goals were to get simple HTTP GETs to return an XML instance created by JAXB.
 As such `Customer.java` is the JAXB object that will create a simple XML document with root element customer, child element name which has attribute pin as an integer.
 
 `XMLService.java` exposes "/customer" which should return a simple string, my thought during troublshooting was `HTTP GET /customer` and at least return a simple String. That doesn't work. We also expose "/customer/{pin}" if `HTTP GET /customer/1234` we should receieve XML document of
-```<customer pin="1234">
-  <name>mykong</name>
-  </customer>
-  ```
+`<customer pin="1234"><name>mykong</name></customer>`
 This doesn't work either. I did enable trace on the Jersey servlet and I get these trace headers back
 
-```
+`
 --REQUEST--
 GET /mavenproject1/rest/customer/1234
 Host: localhost:8888
@@ -35,7 +32,7 @@ X-Jersey-Tracing-002: MATCH       [ ---- /  0.66 ms |  ---- %] Matching path [/c
 X-Jersey-Tracing-003: MATCH       [ 0.07 /  0.71 ms |  2.12 %] RequestMatching summary
 X-Jersey-Tracing-004: RESP-FILTER [ 2.47 /  3.42 ms | 70.71 %] Response summary: 0 filters
 X-Jersey-Tracing-005: FINISHED    [ ---- /  3.49 ms |  ---- %] Response status: 404/CLIENT_ERROR|Not Found
-```
+`
 It appears that Jersey is not finding a suitable servlet to handle my request.
 
 mavenproject1 is my WAR and exploded directory in tomcat8 webapps folder, "/rest" is my url-mapping value in the web.xml, rest of URI is matching decorators in XMLService.java.
