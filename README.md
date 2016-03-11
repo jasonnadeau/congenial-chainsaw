@@ -11,10 +11,15 @@ This doesn't work either. I did enable trace on the Jersey servlet and I get the
 
 
 `X-Jersey-Tracing-000: START       [ ---- /  ---- ms |  ---- %] baseUri=[http://localhost:8888/mavenproject1/rest/] requestUri=[http://localhost:8888/mavenproject1/rest/customer/1234] method=[GET] authScheme=[n/a] accept=[text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8] accept-encoding=[gzip, deflate] accept-charset=n/a accept-language=[en-US,en;q=0.5] content-type=n/a content-length=n/a`
+
 `X-Jersey-Tracing-001: PRE-MATCH   [ 0.02 /  0.58 ms |  0.54 %] PreMatchRequest summary: 0 filters`
+
 `X-Jersey-Tracing-002: MATCH       [ ---- /  0.66 ms |  ---- %] Matching path [/customer/1234]`
+
 `X-Jersey-Tracing-003: MATCH       [ 0.07 /  0.71 ms |  2.12 %] RequestMatching summary`
+
 `X-Jersey-Tracing-004: RESP-FILTER [ 2.47 /  3.42 ms | 70.71 %] Response summary: 0 filters`
+
 `X-Jersey-Tracing-005: FINISHED    [ ---- /  3.49 ms |  ---- %] Response status: 404/CLIENT_ERROR|Not Found`
 
 It appears that Jersey is not finding a suitable servlet to handle my request.
