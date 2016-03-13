@@ -13,28 +13,54 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "customers")
 @XmlRootElement(name = "customer")
 public class Customer {
 
-	String name;
-	int pin;
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column
+    private int id;
+    @Column
+    String name;
+    @Column
+    int pin;
 
-	@XmlElement
-	public String getName() {
-		return name;
-	}
+    @XmlElement
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@XmlAttribute
-	public int getPin() {
-		return pin;
-	}
+    @XmlAttribute
+    public int getPin() {
+        return pin;
+    }
 
-	public void setPin(int pin) {
-		this.pin = pin;
-	}
+    public void setPin(int pin) {
+        this.pin = pin;
+    }
+
+    @XmlElement
+    public int getId() {
+        return id;
+
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

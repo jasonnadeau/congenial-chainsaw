@@ -15,31 +15,30 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
-
 @Path("/customer")
 public class XMLService {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getEcho() {
-    
+
         String echo = "ECHO!";
         return echo;
-    
+
     }
-    
-	@GET
-	@Path("/{pin}")
-	@Produces(MediaType.APPLICATION_XML)
-	public Customer getCustomerInXML(@PathParam("pin") int pin) {
 
-		Customer customer = new Customer();
-		customer.setName("mkyong");
-		customer.setPin(pin);
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Customer getCustomerInXML(@PathParam("id") int id) {
 
-		return customer;
+        Customer customer = new Customer();
+        customer.setName("Mr. Smith");
+        customer.setPin(1234);
+        customer.setId(id);
 
-	}
-    
+        return customer;
+
+    }
+
 }
